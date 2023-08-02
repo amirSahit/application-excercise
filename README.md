@@ -94,3 +94,8 @@ Additionally
    - this one is important for the zod validation of adding a post
 2. CreatePostProps @ src\types\post.ts
    - this one is important for the state management of setCreatePost (see above for components)
+
+## Additional Libraries
+
+- React Hook Form
+- Faker
