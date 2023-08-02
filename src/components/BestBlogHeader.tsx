@@ -1,3 +1,5 @@
+"use client";
+
 import { CreatePostProps } from "~/types/post";
 
 function BestBlogHeader({ createPost, setCreatePost }: CreatePostProps) {
