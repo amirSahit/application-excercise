@@ -8,8 +8,8 @@ function SinglePostPage() {
   const post = api.post.byId.useQuery({ id });
 
   return (
-    <main className="flex flex-col items-start justify-around sm:flex-row sm:p-5">
-      <header className="sticky top-0 flex w-full min-w-[200px] flex-col justify-center bg-light-blue p-5 text-center sm:w-[20vw] sm:rounded-subRounded">
+    <main className="flex h-[100vh] flex-col items-start justify-around bg-light-blue sm:flex-row sm:bg-white sm:p-5">
+      <header className="flex w-full min-w-[200px] flex-col justify-center bg-light-blue p-5 text-center sm:w-[20vw] sm:rounded-subRounded">
         <h1 className="text-3xl font-bold">BestBlog</h1>
         <Link
           href="/"
@@ -19,8 +19,8 @@ function SinglePostPage() {
         </Link>
       </header>
 
-      <section className="flex h-[100vh] w-full flex-col items-center bg-light-blue p-5 sm:h-full sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:rounded-mainRounded">
-        <article className="flex w-full flex-col gap-3 rounded-subRounded bg-white p-5">
+      <section className="flex h-full w-full flex-col items-center bg-light-blue p-5 sm:h-full sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:rounded-mainRounded">
+        <article className="flex h-auto max-h-[70vh] w-full flex-col gap-3 overflow-scroll rounded-subRounded bg-white p-5 sm:max-h-full">
           <p className="text-end">
             {post.data?.createdAt.toLocaleDateString()}
           </p>

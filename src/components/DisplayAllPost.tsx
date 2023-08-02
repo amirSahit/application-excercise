@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 function DisplayAllPost() {
   const posts = api.post.all.useQuery();
   return (
-    <div className="sm:scrollbarteal flex w-full flex-col items-center bg-light-blue p-5 sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:overflow-y-auto sm:rounded-mainRounded">
+    <div className="flex w-full flex-col items-center bg-light-blue p-5 sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:overflow-y-auto sm:rounded-mainRounded">
       <section className="flex flex-col gap-5 sm:grid sm:grid-cols-2 sm:items-start">
         {posts.data?.map((post, idx) => (
           <article
@@ -17,6 +17,12 @@ function DisplayAllPost() {
             </Link>
           </article>
         ))}
+        {posts.isError && (
+          <p className="text-red-500">
+            Oh no! Something went wrong. Refresh the page and try again.
+          </p>
+        )}
+        {posts.isLoading && <p>Loading...</p>}
       </section>
     </div>
   );

@@ -53,6 +53,7 @@ function CreatePostForm({
         <textarea
           {...register("content")}
           className="w-full rounded-subRounded p-2"
+          rows={5}
         />
         <button
           disabled={Object.keys(formState.errors).length > 0}
