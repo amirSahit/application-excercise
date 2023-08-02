@@ -7,22 +7,22 @@ function SinglePostPage() {
   const id = Number(useRouter().query.id);
   const post = api.post.byId.useQuery({ id });
   return (
-    <main className="flex items-start justify-around p-10">
+    <main className="flex flex-col items-start justify-around sm:flex-row sm:p-5">
       <Link
         href="/"
-        className="flex min-h-[20vh] min-w-[20vw] flex-col justify-between rounded-mainRounded bg-light-blue p-5"
+        className="sticky top-0 w-full bg-light-blue p-5 text-center sm:w-[20vw] sm:rounded-subRounded"
       >
-        <h1 className="text-[2vw] font-bold">Back</h1>
+        <h1 className="text-3xl font-bold">Back</h1>
       </Link>
-      <article className="flex w-[50vw] flex-col rounded-mainRounded bg-light-blue p-5">
-        <section className="flex flex-col gap-4 rounded-subRounded bg-white p-5">
-          <p className="text-end text-[2vh]">
+      <section className="flex w-full flex-col items-center bg-light-blue p-5 sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:rounded-mainRounded">
+        <article className="flex flex-col gap-3 rounded-subRounded bg-white p-5">
+          <p className="text-end">
             {post.data?.createdAt.toLocaleDateString()}
           </p>
-          <h2 className="text-[4vh]">{post.data?.title}</h2>
-          <p className="text-[2vh]">{post.data?.content}</p>
-        </section>
-      </article>
+          <h1 className="text-3xl font-bold">{post.data?.title}</h1>
+          <p>{post.data?.content}</p>
+        </article>
+      </section>
     </main>
   );
 }
