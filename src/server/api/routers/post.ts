@@ -41,7 +41,7 @@ export const postRouter = createTRPCRouter({
         content: z.string(),
       })
     )
-    .query(async ({ input }) => {
+    .mutation(async ({ input }) => {
       const data = await prisma.post.create({
         data: input,
       });

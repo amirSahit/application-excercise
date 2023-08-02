@@ -1,8 +1,16 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PostType, postSchema } from "~/types/post";
+import { api } from "~/utils/api";
 
 function CreatePostForm() {
+  const utils = api.useContext();
+  const add = api.post.add.useMutation({
+    onSuccess: () => {
+      utils.post.all.invalidate();
+    },
+  });
+
   const {
     register,
     formState: { errors },
@@ -12,8 +20,8 @@ function CreatePostForm() {
     resolver: zodResolver(postSchema),
   });
 
-  function onSubmit(post: PostType) {
-    console.log(post);
+  async function onSubmit(post: PostType) {
+    await add.mutateAsync(post);
   }
   return (
     <>
