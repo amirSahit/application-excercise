@@ -6,6 +6,7 @@ export default {
     colors: {
       "light-blue": "#ABE2F8",
       white: "#FFFFFF",
+      redError: "#FF0000",
     },
     borderRadius: {
       mainRounded: "30px",
