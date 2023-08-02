@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { api } from "~/utils/api";
 
-function DisplayAllPost() {
+function DisplayAllPosts() {
   const posts = api.post.all.useQuery();
   return (
     <div className="flex w-full flex-col items-center bg-light-blue p-5 sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:overflow-y-auto sm:rounded-mainRounded">
@@ -28,4 +28,4 @@ function DisplayAllPost() {
   );
 }
 
-export default DisplayAllPost;
+export default DisplayAllPosts;

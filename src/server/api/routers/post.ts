@@ -37,7 +37,7 @@ export const postRouter = createTRPCRouter({
   add: publicProcedure
     .input(
       z.object({
-        title: z.string(),
+        title: z.string().min(3).max(191),
         content: z.string(),
       })
     )

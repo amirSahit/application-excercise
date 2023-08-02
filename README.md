@@ -1,84 +1,94 @@
-Introduction:
--------------
+## Welcome:
 
-This exercise is designed to test your skills in building a simple blog application using TypeScript, Next.js, tRPC, Prisma, and Planetscale. The objective is to assess your ability to set up a project, work with various technologies, and implement basic CRUD operations.
+Hey there! Thanks for checking out the project.
 
-Tech Stack:
------------
+## Tech Stack:
 
--   TypeScript
--   Next.js
--   tRPC
--   Prisma
--   Planetscale
+- TypeScript
+- Next.js
+- tRPC
+- Prisma
+- Planetscale
 
-Setup Instructions:
--------------------
+## Setup Instruction:
 
-1.  Fork the repository.
-2.  Install the required dependencies by running `npm install`.
-3.  setup a Database at planetscale.
-4.  Configure the database connection in the `.env` file with your Planetscale credentials.
-5.  Set up the Prisma schema for the blog post and migrate to the database.
-6.  Run `npx prisma studio` and pre-populate your DB with data.
-7.  Run the development server using `npm run dev`.
+1. Planetscale  
+   a. Create an account and a database @ Planetscale https://planetscale.com/
 
-Task Details:
--------------
+2. .env
+   a. Create an .env file in your project (there should be an .env.example file - you can rename it)
+   b. Switch out the <myname>,<mypassword>,<host>,<dbName> with your information @ Guide https://planetscale.com/docs/tutorials/connect-any-application
 
-You will be building a basic blog application with the following features:
+3. Install & Run
+   a. `npm install`
+   b. `npm run dev`
+
+## Task Details:
+
+I have implemented the following features
 
 1.  Homepage:
 
-    -   Display a list of all blog posts with their titles and creation dates.
-    -   Clicking on a blog post should navigate to its detail page.
+    - Display a list of all blog posts with their titles and creation dates.
+    - Clicking on a blog post should navigate to its detail page.
+
 2.  Blog Post Detail Page:
 
-    -   Display the full content of the selected blog post.
-3. BONUS EXCERCISE Create Blog Post Page:
+    - Display the full content of the selected blog post.
 
-    -   Provide a form to allow users to create a new blog post.
-    -   Implement client-side form validation to ensure the title and content are not empty.
+3.  Create Blog Post Page:
+
+    - Provide a form to allow users to create a new blog post.
+    - Implement client-side form validation to ensure the title and content are not empty.
+
 4.  Backend API:
 
-    -   Use tRPC to create the API endpoints for fetching all blog posts and fetching a single blog post by its ID.
+    - Use tRPC to create the API endpoints for fetching all blog posts and fetching a single blog post by its ID.
 
-Implementation Guidelines:
---------------------------
+Additionally
 
-1.  Project Structure:
+5. TypeScript:
 
-    -   Follow a clean and organized project structure.
-    -   Separate components, pages, and services for better code readability.
-2.  TypeScript:
+   - Utilize TypeScript types for improved code safety and documentation.
+   - Use interfaces and types for API responses and data models.
 
-    -   Utilize TypeScript types for improved code safety and documentation.
-    -   Use interfaces and types for API responses and data models.
-3.  Next.js:
+6. Next.js:
 
-    -   Utilize server-side rendering (SSR) and static site generation (SSG) where appropriate.
-    -   Use Next.js features such as dynamic routing.
-4.  Prisma:
+   - Utilize server-side rendering (SSR) and static site generation (SSG) where appropriate.
+   - Use Next.js features such as dynamic routing.
 
-    -   Define the "BlogPost" model in the Prisma schema with appropriate fields.
-    -   Use Prisma to interact with the database and implement CRUD operations.
-5.  Planetscale:
+7. Prisma:
 
-    -   Set up the database connection and credentials in the `.env` file.
-    -   Use Planetscale to deploy and manage the application data.
+   - Define the "BlogPost" model in the Prisma schema with appropriate fields.
+   - Use Prisma to interact with the database and implement CRUD operations.
 
-Submission Guidelines:
-----------------------
+8. Tailwind
 
-1.  Commit your code to a GitHub repository.
-2.  Include a detailed README with instructions on how to set up and run the application.
-3.  Provide comments and documentation for important functions and components.
-4.  Submit the GitHub repository URL along with your completed exercise.
+   - Used as main CSS styler
+   - Added some custome colors and a scollbar
 
-Additional Notes:
------------------
+## Important Components
 
-Feel free to reach out if you have any questions or need clarification on the exercise. We're looking forward to seeing your implementation!
-Also feel free to use any kind of library outside the given ones that you prefer. 
+1. <BestBlogHeader/> @ src\components\BestBlogHeader.tsx
+   - Just a small header `CreatePostProps` as Pops
+   - It had a button in it that sets the visibility of the <CreatePostFrom/>
+2. <CreatePostForm/> @ src\components\CreatePostForm.tsx
+   - A Form that uses useForm and zod for validation
+   - It has a mutation and useContext
+   - It refreshes <DisplayAllPosts/> and closes itself onSuccess
+3. <DisplaySinglePost/> @ src\pages\post\[id].tsx
+   - It shows a single post in full
+   - It also utilizes useRouter to give the trpc add procedure the Id
+4. <Home/> @ src\pages\index.tsx
+   - This is the main hub
+   - It is the state manager that gives the setCreatePost to the <BestBlogHeader/> and <CreatePostFrom/>
+5. src\server\api\routers\post.ts
+   - this one holds the gold
+   - here you find the Procedure for the queries all & byId and the mutation add
 
-Good luck and happy coding!
+## Important Types
+
+1. PostType & postSchema @ src\types\post.ts
+   - this one is important for the zod validation of adding a post
+2. CreatePostProps @ src\types\post.ts
+   - this one is important for the state management of setCreatePost (see above for components)

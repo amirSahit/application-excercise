@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { api } from "~/utils/api";
 
-function SinglePostPage() {
+function DisplaySinglePost() {
   const id = Number(useRouter().query.id);
   const post = api.post.byId.useQuery({ id });
 
@@ -39,4 +39,4 @@ function SinglePostPage() {
   );
 }
 
-export default SinglePostPage;
+export default DisplaySinglePost;
