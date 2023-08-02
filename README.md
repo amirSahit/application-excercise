@@ -71,19 +71,19 @@ Additionally
 
 ## Important Components
 
-1. <BestBlogHeader/> @ src\components\BestBlogHeader.tsx
+1. `<BestBlogHeader/>` @ src\components\BestBlogHeader.tsx
    - Just a small header `CreatePostProps` as Pops
-   - It had a button in it that sets the visibility of the <CreatePostFrom/>
-2. <CreatePostForm/> @ src\components\CreatePostForm.tsx
+   - It had a button in it that sets the visibility of the `<CreatePostFrom/>`
+2. `<CreatePostForm/>` @ src\components\CreatePostForm.tsx
    - A Form that uses useForm and zod for validation
    - It has a mutation and useContext
-   - It refreshes <DisplayAllPosts/> and closes itself onSuccess
-3. <DisplaySinglePost/> @ src\pages\post\[id].tsx
+   - It refreshes `<DisplayAllPosts/>` and closes itself onSuccess
+3. `<DisplaySinglePost/>` @ src\pages\post\[id].tsx
    - It shows a single post in full
    - It also utilizes useRouter to give the trpc add procedure the Id
-4. <Home/> @ src\pages\index.tsx
+4. `<Home/>` @ src\pages\index.tsx
    - This is the main hub
-   - It is the state manager that gives the setCreatePost to the <BestBlogHeader/> and <CreatePostFrom/>
+   - It is the state manager that gives the setCreatePost to the `<BestBlogHeader/>` and `<CreatePostFrom/>`
 5. @ src\server\api\routers\post.ts
    - This one holds the gold
    - Here you find the Procedure for the queries all & byId and the mutation add

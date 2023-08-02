@@ -34,7 +34,7 @@ function CreatePostForm({
     await add.mutateAsync(post);
   }
 
-  //if the mutation is error, display a error message
+  //if the mutation is error, display an error message
   if (add.isError)
     return (
       <p className="text-redError">
