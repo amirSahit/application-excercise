@@ -1,9 +1,12 @@
 import Head from "next/head";
-import Link from "next/link";
-import { api } from "~/utils/api";
+import { useState } from "react";
+import BestBlogHeader from "~/components/BestBlogHeader";
+import CreatePostForm from "~/components/CreatePostForm";
+import DisplayAllPost from "~/components/DisplayAllPost";
 
 export default function Home() {
-  const posts = api.post.all.useQuery();
+  const [createPost, setCreatePost] = useState(false);
+
   return (
     <>
       <Head>
@@ -12,28 +15,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-start justify-around sm:flex-row sm:p-5">
-        <section className="sticky top-0 w-full min-w-[200px] bg-light-blue p-5 text-center sm:w-[20vw] sm:rounded-subRounded">
-          <h1 className="text-3xl font-bold">BestBlog</h1>
-          <button className="mt-5 self-center rounded-subRounded bg-white px-4 py-2 text-lg font-bold text-light-blue">
-            Create Your Post
-          </button>
-        </section>
-
-        <div className="sm:scrollbarteal flex w-full flex-col items-center bg-light-blue p-5 sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:overflow-y-auto sm:rounded-mainRounded">
-          <section className="flex flex-col gap-5 sm:grid sm:grid-cols-2">
-            {posts.data?.map((post, idx) => (
-              <article
-                key={idx}
-                className="max-w-[80vw] rounded-subRounded bg-white p-2 hover:scale-105 sm:min-w-full sm:max-w-[40vw]"
-              >
-                <Link href={`/post/${post.id}`}>
-                  <h3 className="text-lg font-bold">{post.title}</h3>
-                  <p>{post.createdAt.toLocaleDateString()}</p>
-                </Link>
-              </article>
-            ))}
-          </section>
+        <div className="sticky top-0 flex w-full flex-col sm:w-auto sm:gap-5">
+          <BestBlogHeader
+            setCreatePost={setCreatePost}
+            createPost={createPost}
+          />
+          {createPost && <CreatePostForm />}
         </div>
+        <DisplayAllPost />
       </main>
     </>
   );

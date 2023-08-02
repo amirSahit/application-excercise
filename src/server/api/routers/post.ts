@@ -33,4 +33,18 @@ export const postRouter = createTRPCRouter({
       });
       return data;
     }),
+
+  add: publicProcedure
+    .input(
+      z.object({
+        title: z.string(),
+        content: z.string(),
+      })
+    )
+    .query(async ({ input }) => {
+      const data = await prisma.post.create({
+        data: input,
+      });
+      return data;
+    }),
 });
