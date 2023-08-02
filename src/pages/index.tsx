@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { api } from "~/utils/api";
 
 export default function Home() {
@@ -11,21 +12,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex items-start justify-around p-10">
-        <section className="min-h-[250px] min-w-[300px] rounded-mainRounded bg-light-blue p-5">
-          <h1 className="text-4xl font-bold">BestBlog</h1>
-          <button>Create Your Post</button>
+        <section className="flex min-h-[20vh] min-w-[20vw] flex-col justify-between rounded-mainRounded bg-light-blue p-5">
+          <h1 className="text-[2vw] font-bold">BestBlog</h1>
         </section>
-        <section className="grid h-[90vh] grid-cols-2 items-start gap-5 rounded-mainRounded bg-light-blue p-5">
-          {posts.data?.map((post, idx) => (
-            <article
-              key={idx}
-              className="h-[15vh] max-w-[25vw] rounded-subRounded bg-white p-2 hover:scale-105 hover:cursor-pointer"
-            >
-              <h3 className="text-lg font-bold">{post.title}</h3>
-              <p>{post.createdAt.toLocaleDateString()}</p>
-            </article>
-          ))}
-        </section>
+        <div className="flex flex-col rounded-mainRounded bg-light-blue p-5 ">
+          <section className="grid h-[85vh] grid-cols-2 items-start gap-5 ">
+            {posts.data?.map((post, idx) => (
+              <article
+                key={idx}
+                className="h-[15vh] max-w-[25vw] rounded-subRounded bg-white p-2 hover:scale-105"
+              >
+                <Link href={`/post/${post.id}`}>
+                  <h3 className="text-[1vw] font-bold">{post.title}</h3>
+                  <p>{post.createdAt.toLocaleDateString()}</p>
+                </Link>
+              </article>
+            ))}
+          </section>
+          <button className="mt-[2vh] h-[10vh] w-[20vw] place-self-center rounded-subRounded bg-white px-2 py-3 font-bold text-light-blue">
+            Create Your Post
+          </button>
+        </div>
       </main>
     </>
   );

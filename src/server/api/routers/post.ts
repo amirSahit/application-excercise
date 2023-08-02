@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { prisma } from "~/server/db";
+import { z } from "zod";
 
 const defaultPostSelect = Prisma.validator<Prisma.PostSelect>()({
   id: true,
@@ -17,4 +18,19 @@ export const postRouter = createTRPCRouter({
     });
     return data;
   }),
+
+  byId: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      })
+    )
+    .query(async ({ input }) => {
+      const { id } = input;
+      const data = await prisma.post.findUnique({
+        where: { id },
+        select: defaultPostSelect,
+      });
+      return data;
+    }),
 });
