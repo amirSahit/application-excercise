@@ -4,7 +4,10 @@ import Image from "next/image";
 import { api } from "~/utils/api";
 
 function DisplayAllPosts() {
+  //query to get all posts
   const posts = api.post.all.useQuery();
+
+  //below you can see the main component but also the error, loading states and no data state
   return (
     <div className="flex w-full flex-col items-center bg-light-blue p-5 sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:overflow-y-auto sm:rounded-mainRounded">
       <section className="flex flex-col gap-5 sm:grid sm:grid-cols-2 sm:items-start">
@@ -19,12 +22,15 @@ function DisplayAllPosts() {
             </Link>
           </article>
         ))}
+
         {posts.isError && (
           <p className="text-red-500">
             Oh no! Something went wrong. Refresh the page and try again.
           </p>
         )}
+
         {posts.isLoading && <p>Loading...</p>}
+
         {!posts.data && !posts.isLoading && (
           <div className="flex flex-col items-center">
             <Image

@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+//schema used here: src\components\CreatePostForm.tsx
 export const postSchema = z.object({
   title: z
     .string()
@@ -10,6 +11,8 @@ export const postSchema = z.object({
 
 export type PostType = z.infer<typeof postSchema>;
 
+//used here: src\components\CreatePostForm.tsx && src\components\BestBlogHeader.tsx
+//parent: src\pages\index.tsx
 export type CreatePostProps = {
   createPost: boolean;
   setCreatePost: React.Dispatch<React.SetStateAction<boolean>>;

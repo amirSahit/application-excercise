@@ -1,10 +1,12 @@
 import Head from "next/head";
 import { useState } from "react";
+
 import BestBlogHeader from "~/components/BestBlogHeader";
 import CreatePostForm from "~/components/CreatePostForm";
 import DisplayAllPosts from "~/components/DisplayAllPosts";
 
 export default function Home() {
+  //state to manage the visibility of CreatePostForm component (true = visible, false = hidden)
   const [createPost, setCreatePost] = useState(false);
 
   return (

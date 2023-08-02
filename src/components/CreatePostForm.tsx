@@ -8,7 +8,10 @@ import { api } from "~/utils/api";
 function CreatePostForm({
   setCreatePost,
 }: Omit<CreatePostProps, "createPost">) {
+  //useContext used to invalidate the query cache after a new post is created
   const utils = api.useContext();
+
+  //mutation to create a new post
   const add = api.post.add.useMutation({
     onSuccess: () => {
       utils.post.all.invalidate();
@@ -16,6 +19,7 @@ function CreatePostForm({
     },
   });
 
+  //useForm hook to manage the form state and validation
   const {
     register,
     formState: { errors },
@@ -25,10 +29,12 @@ function CreatePostForm({
     resolver: zodResolver(postSchema),
   });
 
+  //function to handle the form submission
   async function onSubmit(post: PostType) {
     await add.mutateAsync(post);
   }
 
+  //if the mutation is error, display a error message
   if (add.isError)
     return (
       <p className="text-redError">
