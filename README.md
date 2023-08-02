@@ -12,16 +12,18 @@ Hey there! Thanks for checking out the project.
 
 ## Setup Instruction:
 
-1. Planetscale  
-   a. Create an account and a database @ Planetscale https://planetscale.com/
+1. Planetscale
+
+   - Create an account and a database @ Planetscale https://planetscale.com/
 
 2. .env
-   a. Create an .env file in your project (there should be an .env.example file - you can rename it)
-   b. Switch out the <myname>,<mypassword>,<host>,<dbName> with your information @ Guide https://planetscale.com/docs/tutorials/connect-any-application
+
+   - Create an .env file in your project (there should be an .env.example file - you can rename it)
+   - Switch out the <myname>,<mypassword>,<host>,<dbName> with your information @ Guide https://planetscale.com/docs/tutorials/connect-any-application
 
 3. Install & Run
-   a. `npm install`
-   b. `npm run dev`
+   - `npm install`
+   - `npm run dev`
 
 ## Task Details:
 
@@ -82,9 +84,9 @@ Additionally
 4. <Home/> @ src\pages\index.tsx
    - This is the main hub
    - It is the state manager that gives the setCreatePost to the <BestBlogHeader/> and <CreatePostFrom/>
-5. src\server\api\routers\post.ts
-   - this one holds the gold
-   - here you find the Procedure for the queries all & byId and the mutation add
+5. @ src\server\api\routers\post.ts
+   - This one holds the gold
+   - Here you find the Procedure for the queries all & byId and the mutation add
 
 ## Important Types
 
