@@ -19,7 +19,7 @@ Hey there! Thanks for checking out the project.
 2. .env
 
    - Create an .env file in your project (there should be an .env.example file - you can rename it)
-   - Switch out the <myname>,<mypassword>,<host>,<dbName> with your information @ Guide https://planetscale.com/docs/tutorials/connect-any-application
+   - Switch out the `<myname>`,`<mypassword>`,`<host>`,`<dbName>` with your information @ Guide https://planetscale.com/docs/tutorials/connect-any-application
 
 3. Install & Run
    - `npm install`
