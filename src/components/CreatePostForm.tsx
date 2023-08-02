@@ -1,3 +1,5 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreatePostProps, PostType, postSchema } from "~/types/post";
@@ -26,6 +28,13 @@ function CreatePostForm({
   async function onSubmit(post: PostType) {
     await add.mutateAsync(post);
   }
+
+  if (add.isError)
+    return (
+      <p className="text-redError">
+        Oh no! Something went wrong. Please close the form and try again.
+      </p>
+    );
 
   return (
     <>

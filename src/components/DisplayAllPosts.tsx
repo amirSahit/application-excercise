@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+
 import { api } from "~/utils/api";
 
 function DisplayAllPosts() {
@@ -23,6 +25,17 @@ function DisplayAllPosts() {
           </p>
         )}
         {posts.isLoading && <p>Loading...</p>}
+        {!posts.data && !posts.isLoading && (
+          <div className="flex flex-col items-center">
+            <Image
+              src="/images/lookingForSomething.png"
+              alt="404"
+              width={300}
+              height={300}
+            />
+            <p className="font-bold">Mmmmmh. You need to post something!</p>
+          </div>
+        )}
       </section>
     </div>
   );

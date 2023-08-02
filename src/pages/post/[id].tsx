@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -29,6 +30,19 @@ function DisplaySinglePost() {
             </p>
           )}
           {post.isLoading && <p>Loading...</p>}
+          {!post.data && !post.isLoading && (
+            <div className="flex flex-col items-center">
+              <Image
+                src="/images/lookingForSomething.png"
+                alt="404"
+                width={300}
+                height={300}
+              />
+              <p className="font-bold">
+                Looks like you got lost. Quickly! Return to the Homepage.
+              </p>
+            </div>
+          )}
         </article>
       </section>
     </main>
