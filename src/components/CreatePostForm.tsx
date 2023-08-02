@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PostType, postSchema } from "~/types/post";
+import { CreatePostProps, PostType, postSchema } from "~/types/post";
 import { api } from "~/utils/api";
 
-function CreatePostForm() {
+function CreatePostForm({
+  setCreatePost,
+}: Omit<CreatePostProps, "createPost">) {
   const utils = api.useContext();
   const add = api.post.add.useMutation({
     onSuccess: () => {
       utils.post.all.invalidate();
+      setCreatePost(false);
     },
   });
 
@@ -23,6 +26,7 @@ function CreatePostForm() {
   async function onSubmit(post: PostType) {
     await add.mutateAsync(post);
   }
+
   return (
     <>
       <form

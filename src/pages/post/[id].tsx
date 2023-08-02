@@ -20,7 +20,7 @@ function SinglePostPage() {
       </header>
 
       <section className="flex h-[100vh] w-full flex-col items-center bg-light-blue p-5 sm:h-full sm:max-h-[90vh] sm:max-w-[60vw] sm:justify-between sm:rounded-mainRounded">
-        <article className="flex flex-col gap-3 rounded-subRounded bg-white p-5">
+        <article className="flex w-full flex-col gap-3 rounded-subRounded bg-white p-5">
           <p className="text-end">
             {post.data?.createdAt.toLocaleDateString()}
           </p>

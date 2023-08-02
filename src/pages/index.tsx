@@ -20,7 +20,7 @@ export default function Home() {
             setCreatePost={setCreatePost}
             createPost={createPost}
           />
-          {createPost && <CreatePostForm />}
+          {createPost && <CreatePostForm setCreatePost={setCreatePost} />}
         </div>
         <DisplayAllPost />
       </main>

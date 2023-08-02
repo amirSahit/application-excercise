@@ -9,3 +9,8 @@ export const postSchema = z.object({
 });
 
 export type PostType = z.infer<typeof postSchema>;
+
+export type CreatePostProps = {
+  createPost: boolean;
+  setCreatePost: React.Dispatch<React.SetStateAction<boolean>>;
+};
