@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .mainButton {
+    @apply mt-5 w-[80vw] rounded-subRounded bg-white px-4 py-2 text-lg font-bold text-light-blue sm:w-full;
+  }
+}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
